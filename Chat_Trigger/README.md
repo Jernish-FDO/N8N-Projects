@@ -214,6 +214,4 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ⭐ **Star this repo if you found it helpful!** ⭐
 
-[Report Bug](https://github.com/Jernish-FDO/N8N-CHAT-TRIGGER/issues) • [Request Feature](https://github.com/Jernish-FDO/N8N-CHAT-TRIGGER/issues) • [Discussions](https://github.com/Jernish-FDO/N8N-CHAT-TRIGGER/discussions)
-
 </div>
