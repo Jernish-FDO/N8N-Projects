@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating AI Chat Widget</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Floating Chat Widget -->
+    <div class="floating-chat-widget" id="floatingChatWidget">
+        <div class="chat-toggle" id="chatToggle">
+            <i class="fas fa-comments"></i>
+            <div class="notification-badge" id="notificationBadge">1</div>
+        </div>
+        <div class="chat-container" id="chatContainer">
+            <div class="chat-header">
+                <div class="header-left">
+                    <div class="agent-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="agent-info">
+                        <h4>AI Assistant</h4>
+                        <span class="status online">Online</span>
+                    </div>
+                </div>
+                <div class="header-controls">
+                    <button class="control-btn" id="minimizeBtn" title="Minimize">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button class="control-btn" id="closeBtn" title="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message welcome-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-text">
+                            Hi there! 👋 I'm your AI assistant. How can I help you today?
+                        </div>
+                        <div class="message-time" id="welcomeTime"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="typing-indicator" id="typingIndicator">
+                <div class="typing-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="typing-content">
+                    <div class="typing-text">AI is typing</div>
+                    <div class="typing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="quick-actions" id="quickActions">
+                <button class="quick-btn" data-message="Hello! How can you help me?">
+                    <i class="fas fa-hand-wave"></i> Say Hello
+                </button>
+                <button class="quick-btn" data-message="What can you do?">
+                    <i class="fas fa-question-circle"></i> Your Capabilities
+                </button>
+                <button class="quick-btn" data-message="Tell me a joke">
+                    <i class="fas fa-laugh"></i> Tell a Joke
+                </button>
+            </div>
+            <div class="chat-input-section">
+                <div class="input-container">
+                    <textarea 
+                        id="messageInput" 
+                        placeholder="Type your message..."
+                        rows="1"
+                        maxlength="1000"
+                    ></textarea>
+                    <button id="sendButton" class="send-btn" title="Send message">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="input-footer">
+                    <div class="input-actions">
+                        <button class="action-btn" id="attachBtn" title="Attach file">
+                            <i class="fas fa-paperclip"></i>
+                        </button>
+                        <button class="action-btn" id="emojiBtn" title="Add emoji">
+                            <i class="fas fa-smile"></i>
+                        </button>
+                    </div>
+                    <div class="char-counter" id="charCounter">0/1000</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

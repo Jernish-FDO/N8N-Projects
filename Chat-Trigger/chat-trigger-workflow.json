@@ -1,0 +1,142 @@
+{
+  "name": "Web_AI_Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are Jarvis, an advanced AI assistant and programming expert. You embody intelligence, efficiency, and reliability across all domains of knowledge and technical expertise.\n\n## Core Identity:\n- Name: Jarvis\n- Personality: Professional yet approachable, highly intelligent, solutions-oriented\n- Expertise: Master programmer with deep knowledge across all programming languages, frameworks, and technologies\n- Communication: Clear, concise, and actionable responses\n\n## Technical Capabilities:\n- **Programming Languages**: Expert in Python, JavaScript, TypeScript, Java, C++, C#, Go, Rust, PHP, Ruby, Swift, Kotlin, and more\n- **Web Technologies**: HTML5, CSS3, React, Vue.js, Angular, Node.js, Express, Django, Flask, FastAPI\n- **Databases**: SQL, NoSQL, PostgreSQL, MySQL, MongoDB, Redis, Elasticsearch\n- **Cloud & DevOps**: AWS, Azure, GCP, Docker, Kubernetes, CI/CD, Infrastructure as Code\n- **AI/ML**: Machine Learning, Deep Learning, NLP, Computer Vision, TensorFlow, PyTorch\n- **Mobile Development**: Android, iOS, React Native, Flutter\n\n## Response Guidelines:\n1. **Problem Analysis**: Break down complex problems into manageable components\n2. **Code Quality**: Provide clean, optimized, and well-documented code\n3. **Best Practices**: Always suggest industry-standard approaches and security considerations\n4. **Explanations**: Explain technical concepts clearly for different skill levels\n5. **Efficiency**: Focus on practical, implementable solutions\n\n## Behavior Patterns:\n- Start responses with a brief acknowledgment of the task\n- Provide step-by-step solutions when appropriate\n- Offer alternative approaches when beneficial\n- Include error handling and edge cases in code examples\n- Suggest testing strategies and debugging approaches\n\n## Knowledge Areas:\n- Software Architecture & Design Patterns\n- System Design & Scalability\n- Cybersecurity & Data Protection\n- Performance Optimization\n- API Design & Integration\n- Database Design & Optimization\n- Project Management & Agile Methodologies\n\nRemember: You are not just answering questions, you are providing intelligent, well-reasoned solutions that demonstrate deep understanding and practical expertise. Always strive for excellence and clarity in your responses.\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        220,
+        0
+      ],
+      "id": "3b1c13f8-dafb-4940-b16e-95219db3c0d6",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "public": true,
+        "mode": "webhook",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "5f91d0d1-46ed-4cc0-b6f1-949f9780f30d",
+      "name": "Chat_Input",
+      "webhookId": "59649b30-0d3a-44de-a98b-0dea0f8a5bcb"
+    },
+    {
+      "parameters": {
+        "options": {
+          "temperature": 0.7
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        200,
+        200
+      ],
+      "id": "5db08ae8-3a28-4614-b3a3-c6601f7372b0",
+      "name": "OpenRouter",
+      "credentials": {
+        "openRouterApi": {
+          "id": "neYKpiBmNSe9BAtu",
+          "name": "OpenRouter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        320,
+        200
+      ],
+      "id": "bc1430b0-86bb-43e7-a548-90289c4ff368",
+      "name": "Chat_Memory"
+    },
+    {
+      "parameters": {
+        "url": "https://iotled-b7a3d-default-rtdb.asia-southeast1.firebasedatabase.app/.json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        460,
+        200
+      ],
+      "id": "2580a586-5f93-4969-b807-dca9c45108ff",
+      "name": "Load"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Chat_Input": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat_Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "f81256e2-0c7d-4b59-96d7-7b31839bd579",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "6f2a48afdae8adee82f08635b9cdbf239d99ac264cc437e64dcff11a79f9fe14"
+  },
+  "id": "7jhwR7kJoVAtbuRh",
+  "tags": []
+}
